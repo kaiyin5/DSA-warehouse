@@ -64,3 +64,21 @@ function geekOnacci(a: number = 1, b: number = 3, c: number = 2, n: number = 4):
     n--;
     return geekOnacci(b, c, a + b + c, n);
 }
+
+// https://www.geeksforgeeks.org/dsa/recursive-program-prime-number/
+function checkPrime(num: number, d: number = 2): boolean {
+    // base case
+    if (num < 2) {
+        return false;
+    }
+
+    if (d > num / d) {
+        return true;
+    }
+
+    if (num % d == 0) {
+        return false;
+    }
+
+    return checkPrime(num, d + 1);
+}
