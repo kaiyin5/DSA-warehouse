@@ -53,3 +53,14 @@ function decimalToBinary(decimal: number): string {
     let remainder: string = (decimal % 2).toString();
     return decimalToBinary(~~(decimal / 2)).concat(remainder);
 }
+
+// https://www.geeksforgeeks.org/problems/geek-onacci-number/0
+function geekOnacci(a: number = 1, b: number = 3, c: number = 2, n: number = 4): number {
+    // out of scope
+    if (n < 4) return 0;
+    // base case
+    if (n == 4) return a + b + c;
+
+    n--;
+    return geekOnacci(b, c, a + b + c, n);
+}
