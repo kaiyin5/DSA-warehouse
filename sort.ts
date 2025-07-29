@@ -56,6 +56,35 @@ function cyclicSort(arr: number[]): void {
     }
 }
 
+// 
+function mergeSort(arr: number[]): number[] {
+    // base case
+    if (arr.length <= 1) {
+        return arr;
+    }
+    let mid: number = arr.length >> 1;
+    let left: number[] = arr.slice(0, mid);
+    let right: number[] = arr.slice(mid);
+
+    return merge(mergeSort(left), mergeSort(right));
+
+    function merge(left: number[], right: number[]): number[] {
+        let lLen = left.length, rLen = right.length;
+        let lIndex = 0, rIndex = 0;
+        let mergedArr = new Array(lLen + rLen);
+        for (let i = 0; i < mergedArr.length; i++) {
+            if (left[lIndex] < right[rIndex] || rIndex == rLen) {
+                mergedArr[i] = left[lIndex];
+                lIndex++;
+            } else {
+                mergedArr[i] = right[rIndex];
+                rIndex++;
+            }
+        }
+        return mergedArr;
+    }
+}
+
 
 // Tools
 function findMin(arr: number[], start: number, end: number): number {

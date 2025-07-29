@@ -39,9 +39,9 @@ function binaryToDecimal(binary: string): number {
     }
 
     if (binary.slice(-1) == '0') {
-        return binaryToDecimal(binary.slice(0, binary.length - 1)) * 2;
+        return binaryToDecimal(binary.slice(0, binary.length - 1)) << 1;
     }
-    return binaryToDecimal(binary.slice(0, binary.length - 1)) * 2 + 1;
+    return binaryToDecimal(binary.slice(0, binary.length - 1)) << 1 + 1;
 }
 
 // 
@@ -50,8 +50,8 @@ function decimalToBinary(decimal: number): string {
     if (decimal <= 1) {
         return decimal.toString();
     }
-    let remainder: string = (decimal % 2).toString();
-    return decimalToBinary(~~(decimal / 2)).concat(remainder);
+    let remainder: string = (decimal & 1).toString();
+    return decimalToBinary((decimal >> 1)).concat(remainder);
 }
 
 // https://www.geeksforgeeks.org/problems/geek-onacci-number/0
